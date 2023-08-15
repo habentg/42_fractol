@@ -6,7 +6,7 @@
 /*   By: fkidane <finanmeharenak@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 22:12:41 by fkidane           #+#    #+#             */
-/*   Updated: 2023/08/15 13:11:27 by fkidane          ###   ########.fr       */
+/*   Updated: 2023/08/15 14:37:49 by fkidane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 /* initialize our set based on thier choice */
 void    init_fractal(int argc, char **argv, t_fractal *data)
 {
-    if (argc == 2 && ft_strncmp(argv[1], "mandel", 7))
-         mandel(data);
+    if (argc == 2 && ft_strncmp(argv[1], "m", 2))
+         printf("sadsf"); //mandel(data);
     else if (argc == 2 && ft_strncmp(argv[1], "ship", 5))
-        printf("s"); //ship(data);
+        mandel(data);
     else if (argc == 4 && ft_strncmp(argv[1], "julia", 6))
         printf("j"); //julia(data, argv);
     else
@@ -28,6 +28,7 @@ int main(int argc, char ** argv)
 {
     t_fractal   *data; // pointer to out respective set
     
+    data = malloc(sizeof(t_fractal *));
     // handle any input error here
 
     // calculate and desplay our sets ---- real deal lmao 
