@@ -3,12 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
+#    By: fkidane <finanmeharenak@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 05:18:43 by aandom            #+#    #+#              #
-#    Updated: 2023/08/14 16:57:36 by aandom           ###   ########.fr        #
+#    Updated: 2023/08/14 20:44:24 by fkidane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+$(VERBOSE).SILENT:
 
 RED = \033[0;31m
 RESET = \033[0m
@@ -34,35 +36,35 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
-	@echo "$(NAME): $(GREEN)object files were created$(RESET)"
-	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+	# @echo "$(NAME): $(GREEN)object files were created$(RESET)"
+	# @echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_PATH) -I$(MLX_PATH) -c -o $@ $<
-	@echo "$(NAME): $(GREEN)$(OBJ_DIR) was created$(RESET)"
+	# @echo "$(NAME): $(GREEN)$(OBJ_DIR) was created$(RESET)"
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_PATH)
-	@echo "$(NAME): $(GREEN)$(LIBFT) was created$(RESET)"
+	# @echo "$(NAME): $(GREEN)$(LIBFT) was created$(RESET)"
 
 $(MLX):
 	@$(MAKE) -C $(MLX_PATH)
-	@echo "$(NAME): $(GREEN)$(MLX) was created$(RESET)"
+	# @echo "$(NAME): $(GREEN)$(MLX) was created$(RESET)"
 
 clean:
 	@$(MAKE) -C $(LIBFT_PATH) clean
 	@$(MAKE) -C $(MLX_PATH) clean
 	@rm -r $(OBJ_DIR)
-	@echo "$(NAME): $(RED)$(OBJ_DIR) was deleted$(RESET)"
-	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
+	# @echo "$(NAME): $(RED)$(OBJ_DIR) was deleted$(RESET)"
+	# @echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 
 fclean: clean
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-	@echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
+	# @echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
 	@rm $(NAME)
-	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
+	# @echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re: fclean all
 
