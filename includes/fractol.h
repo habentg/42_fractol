@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkidane <finanmeharenak@gmail.com>         +#+  +:+       +#+        */
+/*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/15 17:04:37 by fkidane          ###   ########.fr       */
+/*   Updated: 2023/08/15 19:36:11 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ typedef struct s_fractal
 	int				y; // vertical
 	double			c_re; // real part of c in the equition Zn+1 = Zn**2 + C; where C = re + im
 	double			c_im; // imaginary
-	double			z_re; // real part of c in the equition Zn+1 = Zn**2 + C; After every calcu
-	double			z_im; // imaginary
-	double			o_re;
-	double			o_im;
+	double			new_re; // real part of c in the equition Zn+1 = Zn**2 + C; After every calcu
+	double			new_im; // imaginary
+	double			old_re;
+	double			old_im;
 	double			zoom; // zoom level
 	double			m_x;
 	double			m_y;
@@ -55,4 +55,5 @@ typedef struct s_fractal
 void    init_fractal(int argc, char **argv, t_fractal *data);
 void    mandel_init(t_fractal *m);
 void	mandel(t_fractal *mandel);
+void	mandel_calculate(t_fractal *f, int *i);
 #endif
