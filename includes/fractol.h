@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/15 19:36:11 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/16 22:36:15 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@
 # define WIDTH 800 // window width
 # define HEIGHT 600 // window height
 
+/*key codes*/
+# define ESC_key 53
+# define UP_ARROW 126
+# define DOWN_ARROW 125
+# define RIGHT_ARROW 124
+# define LEFT_ARROW 123
+# define DEFAULT 2
+# define ITERATE 34
+# define ZOOM_IN 4
+# define ZOOM_out 5
+/*our graphics env*/
 typedef struct s_mlx
 {
 	void			*mlx_ptr; // pointer to (initialized) mlx instance
@@ -33,6 +44,7 @@ typedef struct s_mlx
 	int				endian; // order used to store info, eg: 5f a4 little indian(a4 5f) big indian(5f a4) 
 }					t_mlx;
 
+/*our dear fractal*/
 typedef struct s_fractal
 {
 	t_mlx			mlx; // instance of the mlx graphics env
@@ -45,15 +57,25 @@ typedef struct s_fractal
 	double			old_re;
 	double			old_im;
 	double			zoom; // zoom level
-	double			m_x;
-	double			m_y;
+	double			mv_x; // moving the x cordinate
+	double			mv_y; // moving the x cordinate
 	int				max_iter; // max iteration
-	int				fract;
+	int				fract_id;
 	int				color; // chosen color to represent the bit
 }					t_fractal;
 
-void    init_fractal(int argc, char **argv, t_fractal *data);
-void    mandel_init(t_fractal *m);
-void	mandel(t_fractal *mandel);
-void	mandel_calculate(t_fractal *f, int *i);
+/* mandel funcs*/
+void    init_fractal(int argc, char **argv, t_fractal **data);
+void    mandel_init(t_fractal **mandel);
+void	mandel_draw(t_fractal **mandel);
+void	mandel(t_fractal **mandel);
+void	mandel_calculate(t_fractal **mandel, int *i);
+
+/*key hooks*/
+int		close_func(t_fractal **fractal);
+int		key_events_handler(int key_code, t_fractal *fract);
+void    back_default(t_fractal **fract);
+
+/*mouse hooks*/
+int mouse_event_handler(int mouse_code, int x, int y, t_fractal   *fract);
 #endif
