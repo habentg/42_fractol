@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:25:17 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/16 22:41:30 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 00:38:27 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int mouse_event_handler(int mouse_code, int x, int y, t_fractal   *fract)
 {
-    printf("%d \n", mouse_code);
+    // printf("%d \n", mouse_code);
     mlx_clear_window(fract->mlx.mlx_ptr, fract->mlx.mlx_win);
     if (mouse_code == 4)
 	{

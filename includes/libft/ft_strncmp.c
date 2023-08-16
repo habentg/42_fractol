@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 17:31:55 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/14 15:58:42 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/08/17 00:12:32 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		else
 			i++;
 	}
-	return (0);
+	return (0); //returning zero is success
 }
 
 // int main(void)

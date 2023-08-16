@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:39:27 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/16 22:23:18 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 00:38:11 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	iterate_more(t_fractal **fract)
 
 int key_events_handler(int key_code, t_fractal *fract)
 {
-    printf("%d \n", key_code);
     mlx_clear_window(fract->mlx.mlx_ptr, fract->mlx.mlx_win);
     if (key_code == ESC_key)
         close_func(&fract);

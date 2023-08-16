@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 00:12:36 by fkidane           #+#    #+#             */
-/*   Updated: 2023/08/16 22:33:38 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 00:08:17 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    mandel_init(t_fractal **mandel)
 	m->zoom = 1.0; // zoom level
 	m->mv_x = 0;
 	m->mv_y = 0;
-	m->max_iter = 100; // max number of iteration in each pixel to determine whether its result diverge or converge
+	m->max_iter = 42; // max number of iteration in each pixel to determine whether its result diverge or converge
 	m->color = 0x38004a; // gonna be our default color
 }
 
@@ -46,22 +46,17 @@ void mandel_calculate(t_fractal **mandel, int *i)
         // Save the current real and imaginary values to the old real and old imaginary variables
         m->old_re = m->new_re;
         m->old_im = m->new_im;
-        
         // Update the new real and imaginary values using the Mandelbrot formula
         m->new_re = m->old_re * m->old_re - m->old_im * m->old_im + m->c_re;
-        
-        // Depending on the value of f->flag, calculate the new imaginary value
-        // if (f->flag == 1)
-        //     f->n_im = 2 * fabs(f->o_re * f->o_im) + f->c_im;
-        // else
-        m->new_im = 2 * (m->old_re * m->old_im) + m->c_im;
-    
+        // Depending on the value of id calculate the new imaginary value
+        if (m->fract_id == 1)
+        	m->new_im = 2 * (m->old_re * m->old_im) + m->c_im;
+        else
+            m->new_im = 2 * fabs(m->old_re * m->old_im) + m->c_im;
         // Check if the squared magnitude of the new complex number exceeds 4
         // If it does, the iteration is terminated
         if ((m->new_re * m->new_re + m->new_im * m->new_im) > 4)
-        {
             break ;
-        }
     }
 }
 

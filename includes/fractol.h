@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/16 22:36:15 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 00:34:29 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,7 @@ void    back_default(t_fractal **fract);
 
 /*mouse hooks*/
 int mouse_event_handler(int mouse_code, int x, int y, t_fractal   *fract);
+
+/*Error handling funcs*/
+void    handle_error(int argc, char **argv);
 #endif
