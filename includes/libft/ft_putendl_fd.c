@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:07:31 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/13 14:30:06 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/08/17 13:30:37 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ static void	ft_putstr_fd(char *s, int fd)
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	if (!s || !fd)
+		return ;
+	write(fd, s, ft_strlen(s));
 	ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);
 }

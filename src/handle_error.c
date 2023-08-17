@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 00:14:35 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/17 01:23:44 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 14:26:27 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void    handle_error(int argc, char **argv)
     else if (argc > 2 && (!ft_strncmp(argv[1], "m", 2) || !ft_strncmp(argv[1], "b", 2)))
         ft_putendl_fd("\nERROR!!\nThis fractal doesnt accept other options!", 1);
     else if (!(argc == 4) && (!ft_strncmp(argv[1], "j", 2)))
-        ft_putendl_fd("\nERROR!!\nJulia Set needs [only] two parameters!", 1);
+        ft_putendl_fd("\nERROR!!\nJulia Set needs [only] two parameters! Use:\n  ./fractol j <real> <im>\n", 1);
 }

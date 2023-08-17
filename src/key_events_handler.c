@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:39:27 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/17 00:38:11 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:05:13 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int key_events_handler(int key_code, t_fractal *fract)
         iterate_more(&fract);
     if (fract->fract_id == 2 || fract->fract_id == 1)
 		mandel_draw(&fract);
+    else
+        julia_draw(&fract);
     mlx_put_image_to_window(fract->mlx.mlx_ptr, fract->mlx.mlx_win, fract->mlx.img, 0, 0);
     return (0);
 }

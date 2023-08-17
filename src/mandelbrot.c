@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 00:12:36 by fkidane           #+#    #+#             */
-/*   Updated: 2023/08/17 00:08:17 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:00:13 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,8 @@ void    mandel_init(t_fractal **mandel)
 	m->zoom = 1.0; // zoom level
 	m->mv_x = 0;
 	m->mv_y = 0;
-	m->max_iter = 42; // max number of iteration in each pixel to determine whether its result diverge or converge
+	m->max_iter = 60; // max number of iteration in each pixel to determine whether its result diverge or converge
 	m->color = 0x38004a; // gonna be our default color
-}
-
-void mandel_calculate(t_fractal **mandel, int *i)
-{
-	t_fractal	*m;
-	
-	m = *mandel;
-    *i = -1;  // Initialize the iteration counter to -1
-    // Iterate until the maximum number of iterations (f->max_iter) is reached
-    while (++(*i) < m->max_iter)
-    {
-        // Save the current real and imaginary values to the old real and old imaginary variables
-        m->old_re = m->new_re;
-        m->old_im = m->new_im;
-        // Update the new real and imaginary values using the Mandelbrot formula
-        m->new_re = m->old_re * m->old_re - m->old_im * m->old_im + m->c_re;
-        // Depending on the value of id calculate the new imaginary value
-        if (m->fract_id == 1)
-        	m->new_im = 2 * (m->old_re * m->old_im) + m->c_im;
-        else
-            m->new_im = 2 * fabs(m->old_re * m->old_im) + m->c_im;
-        // Check if the squared magnitude of the new complex number exceeds 4
-        // If it does, the iteration is terminated
-        if ((m->new_re * m->new_re + m->new_im * m->new_im) > 4)
-            break ;
-    }
 }
 
 void mandel_draw(t_fractal **mandel)
@@ -76,7 +50,7 @@ void mandel_draw(t_fractal **mandel)
 			m->c_im = (m->y - HEIGHT / 2) / (m->zoom * HEIGHT / 2) - m->mv_y;
 			m->new_re = 0;
 			m->new_im = 0;
-			mandel_calculate(&m, &i);
+			fract_calculate(&m, &i);
 			if (i == m->max_iter)
 				m->mlx.addr[m->y * WIDTH + m->x] = 0;
 			else

@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/17 00:34:29 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 14:22:14 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,16 @@ typedef struct s_fractal
 	int				color; // chosen color to represent the bit
 }					t_fractal;
 
-/* mandel funcs*/
+/* fractal funcs*/
 void    init_fractal(int argc, char **argv, t_fractal **data);
 void    mandel_init(t_fractal **mandel);
 void	mandel_draw(t_fractal **mandel);
 void	mandel(t_fractal **mandel);
-void	mandel_calculate(t_fractal **mandel, int *i);
+void	fract_calculate(t_fractal **mandel, int *i);
+
+void    julia_set(t_fractal **julia);
+void    julia_draw(t_fractal **julia);
+void    julia_init(t_fractal **julia);
 
 /*key hooks*/
 int		close_func(t_fractal **fractal);
@@ -77,8 +81,11 @@ int		key_events_handler(int key_code, t_fractal *fract);
 void    back_default(t_fractal **fract);
 
 /*mouse hooks*/
-int mouse_event_handler(int mouse_code, int x, int y, t_fractal   *fract);
+int		mouse_event_handler(int mouse_code, int x, int y, t_fractal   *fract);
 
 /*Error handling funcs*/
 void    handle_error(int argc, char **argv);
+
+/* helper funcs*/
+double  ft_atof(char *str);
 #endif
