@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
+/*   By: mkiflema <mkiflema@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/17 14:22:14 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 20:09:36 by mkiflema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include "mlx/mlx.h"
 # include <math.h>
 
-# define WIDTH 800 // window width
-# define HEIGHT 600 // window height
+# define WIDTH 1080 // window width
+# define HEIGHT 800 // window height
 
 /*key codes*/
-# define ESC_key 53
+# define ESC_KEY 53
 # define UP_ARROW 126
 # define DOWN_ARROW 125
 # define RIGHT_ARROW 124
@@ -31,7 +31,7 @@
 # define DEFAULT 2
 # define ITERATE 34
 # define ZOOM_IN 4
-# define ZOOM_out 5
+# define ZOOM_OUT 5
 /*our graphics env*/
 typedef struct s_mlx
 {
@@ -76,9 +76,8 @@ void    julia_draw(t_fractal **julia);
 void    julia_init(t_fractal **julia);
 
 /*key hooks*/
-int		close_func(t_fractal **fractal);
+int		close_func(t_fractal *fractal);
 int		key_events_handler(int key_code, t_fractal *fract);
-void    back_default(t_fractal **fract);
 
 /*mouse hooks*/
 int		mouse_event_handler(int mouse_code, int x, int y, t_fractal   *fract);

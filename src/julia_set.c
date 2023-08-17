@@ -3,40 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   julia_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
+/*   By: mkiflema <mkiflema@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:09:05 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/17 15:00:05 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 20:12:19 by mkiflema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void    julia_init(t_fractal **julia)
+void	julia_init(t_fractal **julia)
 {
-    t_fractal	*j;
-	
+	t_fractal	*j;
+
 	j = *julia;
-    j->mlx.mlx_ptr = mlx_init(); // initialize the mlx library, connecting it with the graphic system of macOS
-    j->mlx.mlx_win = mlx_new_window(j->mlx.mlx_ptr, WIDTH, HEIGHT, "Julia Fractal"); // create a new window
-	j->mlx.img = mlx_new_image(j->mlx.mlx_ptr, WIDTH, HEIGHT); // create a new image where we will plot our shit
-	j->mlx.addr = (int *)mlx_get_data_addr(j->mlx.img, &(j->mlx.bpp), &(j->mlx.line_len), &(j->mlx.endian)); // address of our image
-	j->new_re = 0.0; // real num - after computing the aabove quadratic func
-	j->new_im = 0.0; // im num
-	j->zoom = 1.0; // zoom level
+	j->mlx.mlx_ptr = mlx_init();
+	j->mlx.mlx_win = mlx_new_window(j->mlx.mlx_ptr, \
+		WIDTH, HEIGHT, "Julia Fractal");
+	j->mlx.img = mlx_new_image(j->mlx.mlx_ptr, WIDTH, HEIGHT);
+	j->mlx.addr = (int *)mlx_get_data_addr(j->mlx.img, \
+		&(j->mlx.bpp), &(j->mlx.line_len), &(j->mlx.endian));
+	j->new_re = 0.0;
+	j->new_im = 0.0;
+	j->zoom = 1.0;
 	j->mv_x = 0;
 	j->mv_y = 0;
-	j->max_iter = 60; // max number of iteration in each pixel to determine whether its result diverge or converge
-	j->color = 0x38004a; // gonna be our default color
+	j->max_iter = 60; 
+	j->color = 0xccf1ff;
 }
 
-void    julia_draw(t_fractal **julia)
+void	julia_draw(t_fractal **julia)
 {
-    int		i;
-    t_fractal	*j;
-	
-	j = *julia;
+	int			i;
+	t_fractal	*j;
 
+	j = *julia;
 	j->y = -1;
 	while (++(j->y) < HEIGHT)
 	{
@@ -53,15 +54,16 @@ void    julia_draw(t_fractal **julia)
 			else
 				j->mlx.addr[j->y * WIDTH + j->x] = j->color * (i >> 2);
 		}
-    }
+	}
 }
 
-void    julia_set(t_fractal **julia)
+void	julia_set(t_fractal **julia)
 {
-    julia_init(julia);
-    julia_draw(julia);
-    mlx_put_image_to_window((*julia)->mlx.mlx_ptr, (*julia)->mlx.mlx_win, (*julia)->mlx.img, 0, 0); // put image into window
-	mlx_hook((*julia)->mlx.mlx_win, 17, 1L << 17, close_func, (*julia)); // close window using x at the top-right corner
+	julia_init(julia);
+	julia_draw(julia);
+	mlx_put_image_to_window((*julia)->mlx.mlx_ptr, \
+		(*julia)->mlx.mlx_win, (*julia)->mlx.img, 0, 0);
+	mlx_hook((*julia)->mlx.mlx_win, 17, 1L << 17, close_func, (*julia));
 	mlx_key_hook((*julia)->mlx.mlx_win, key_events_handler, (*julia));
 	mlx_mouse_hook((*julia)->mlx.mlx_win, mouse_event_handler, (*julia));
 	mlx_loop((*julia)->mlx.mlx_ptr);

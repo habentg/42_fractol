@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
+/*   By: mkiflema <mkiflema@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 00:12:36 by fkidane           #+#    #+#             */
-/*   Updated: 2023/08/17 15:00:13 by aandom           ###   ########.fr       */
+/*   Updated: 2023/08/17 19:17:55 by mkiflema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void    mandel_init(t_fractal **mandel)
+void	mandel_init(t_fractal **mandel)
 { /* we can use for burning ship as well --- keep it in mind*/
 	t_fractal	*m;
 	
@@ -30,33 +30,35 @@ void    mandel_init(t_fractal **mandel)
 	m->zoom = 1.0; // zoom level
 	m->mv_x = 0;
 	m->mv_y = 0;
-	m->max_iter = 60; // max number of iteration in each pixel to determine whether its result diverge or converge
-	m->color = 0x38004a; // gonna be our default color
+	m->max_iter = 100; // max number of iteration in each pixel to determine whether its result diverge or converge
+	m->color = 0xccf1ff; // gonna be our default color
 }
 
-void mandel_draw(t_fractal **mandel)
+void	mandel_draw(t_fractal **mandel)
 {
-    int i;
+	int			i;
 	t_fractal	*m;
-	
+
 	m = *mandel;
-    m->y = -1; // x and y are the coordinate (x,y) from top left of the window
-    while (++(m->y) < HEIGHT)
-    {
-        m->x = -1;
-        while (++(m->x) < WIDTH)
-        {
-			m->c_re = 1.5 * (m->x - WIDTH / 2) / (m->zoom * WIDTH / 2) - m->mv_x;
-			m->c_im = (m->y - HEIGHT / 2) / (m->zoom * HEIGHT / 2) - m->mv_y;
+	m->y = -1; // x and y are the coordinate (x,y) from top left of the window
+	while (++(m->y) < HEIGHT)
+	{
+		m->x = -1;
+		while (++(m->x) < WIDTH)
+		{
+			m->c_re = 1.5 * (m->x - WIDTH / 2) 
+				/ (m->zoom * WIDTH / 2) - m->mv_x;
+			m->c_im = (m->y - HEIGHT / 2) 
+				/ (m->zoom * HEIGHT / 2) - m->mv_y;
 			m->new_re = 0;
 			m->new_im = 0;
 			fract_calculate(&m, &i);
 			if (i == m->max_iter)
 				m->mlx.addr[m->y * WIDTH + m->x] = 0;
 			else
-				m->mlx.addr[m->y * WIDTH+ m->x] = (i >> 2) * m->color;
- 		}   
-    }
+				m->mlx.addr[m->y * WIDTH + m->x] = (i >> 2) * m->color;
+		}
+	}
 }
 
 void	mandel(t_fractal **mandel)
