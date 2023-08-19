@@ -6,11 +6,11 @@
 #    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 05:18:43 by aandom            #+#    #+#              #
-#    Updated: 2023/08/16 18:28:21 by aandom           ###   ########.fr        #
+#    Updated: 2023/08/19 18:32:37 by aandom           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# $(VERBOSE).SILENT:
+$(VERBOSE).SILENT:
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
