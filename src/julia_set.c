@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkiflema <mkiflema@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:09:05 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/17 20:12:19 by mkiflema         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:25:36 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	julia_init(t_fractal **julia)
 	j->zoom = 1.0;
 	j->mv_x = 0;
 	j->mv_y = 0;
-	j->max_iter = 60; 
+	j->max_iter = 60;
 	j->color = 0xccf1ff;
 }
 

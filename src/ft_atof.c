@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkiflema <mkiflema@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:27:21 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/17 20:12:55 by mkiflema         ###   ########.fr       */
+/*   Updated: 2023/08/20 15:26:59 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ static double	after_deci_f(char *str)
 	while (str[++i])
 	{
 		if (!ft_isdigit(str[i]))
+		{
 			ft_putendl_fd("Invalid parameter for julia set\n", 1);
+			exit(0);
+		}
 		after_deci += (str[i] - '0') * factor;
 		factor *= 0.1;
 	}
@@ -45,7 +48,10 @@ static double	before_deci_f(char *str)
 	while (str[++i] && str[i] != '.')
 	{
 		if (!ft_isdigit(str[i]))
+		{
 			ft_putendl_fd("Invalid parameter for julia set\n", 1);
+			exit(0);
+		}
 		before_dot = before_dot * 10 + (str[i] - '0');
 	}
 	return (before_dot);
