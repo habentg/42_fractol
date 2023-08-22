@@ -3,47 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 19:08:04 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 21:15:21 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:16:42 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:16:42 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*src_pointer;
-	unsigned char	*dest_pointer;
+	size_t		count;
+	char		*newdest;
+	const char	*newsrc;
 
+	count = 0;
+	newdest = (char *)dest;
+	newsrc = (const char *)src;
 	if (src == NULL && dest == NULL)
-		return (0);
-	i = 0;
-	src_pointer = (unsigned char *)src;
-	dest_pointer = (unsigned char *)dest;
-	if (dest_pointer > src_pointer)
-		while (n-- != 0)
-			dest_pointer[n] = src_pointer[n];
-	else
+		return (NULL);
+	while (n > 0 && newsrc < newdest)
 	{
-		while (i < n)
+		newdest[n - 1] = newsrc[n - 1];
+		n--;
+	}
+	if (src >= dest)
+	{
+		while (count < n)
 		{
-			dest_pointer[i] = src_pointer[i];
-			i++;
+			newdest[count] = newsrc[count];
+			count++;
 		}
 	}
 	return (dest);
 }
 
-// int	main(void)
+// int main(void)
 // {
-// 	char	str[] = "Start stop";
+//     char    dest[] = "hello";
+//     const char src[] = "world";
 
-// 	printf("The string: %s\n", str);
-// 	ft_memmove(str, str + 2, 3 * sizeof(char));
-// 	printf("New string: %s\n", str);
-
-// 	return (0);
+//     ft_memmove(dest + 2, src, 3);
+//     for (int i = 0; i < 15; i++)
+//     {
+//         printf("%c", dest[i]);
+//     }
 // }

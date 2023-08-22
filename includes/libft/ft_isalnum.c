@@ -3,15 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 18:30:30 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 20:26:51 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:14:12 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:14:12 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+#include "libft.h"
+
+int	ft_isalnum(int alpha)
 {
-	return ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'));
+	if ((alpha >= 'A' && alpha <= 'Z') || (alpha >= 'a' && alpha <= 'z')
+		|| (alpha >= '0' && alpha <= '9'))
+		return (1);
+	return (0);
 }
+
+// int	main(void)
+// {
+// 	printf("%d", ft_isalnum(' '));
+// 	printf("%d", ft_isalnum('W'));
+// }

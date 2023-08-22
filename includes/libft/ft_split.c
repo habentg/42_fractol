@@ -3,80 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 13:30:01 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/19 16:02:03 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/11 07:48:47 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/18 12:25:08 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "libft.h"
 
-static int	strings_count(char const *str, char c)
+void	split_writter(char **res, char const *str, char c)
 {
-	int	strings_count;
+	char const	*temp_str;
 
-	strings_count = 0;
+	temp_str = str;
+	while (*temp_str)
+	{
+		while (*str == c)
+			str++;
+		temp_str = str;
+		while (*temp_str && *temp_str != c)
+			temp_str++;
+		if (*temp_str == c || temp_str > str)
+		{
+			*res = ft_substr(str, 0, (temp_str - str));
+			str = temp_str;
+			res++;
+		}
+	}
+	*res = NULL;
+}
+
+int	splited_count(char const *str, char c)
+{
+	int	count;
+
+	count = 0;
 	while (*str)
 	{
-		if (*str != c)
-		{
-			strings_count++;
-			while (*str && *str != c)
-				str++;
-		}
-		else
+		while (*str == c)
+			str++;
+		if (*str)
+			count++;
+		while (*str && *str != c)
 			str++;
 	}
-	return (strings_count);
+	return (count);
 }
 
-static int	string_length(char const *s, char c, int i)
+char	**ft_split(char const *str, char c)
 {
-	int	length;
+	char	**res;
+	size_t	res_size;
 
-	length = 0;
-	while (s[i] != c && s[i])
-	{
-		length++;
-		i++;
-	}
-	return (length);
+	if (!str)
+		return (NULL);
+	res_size = splited_count(str, c);
+	res = (char **)malloc(sizeof(char *) * (res_size + 1));
+	if (!res)
+		return (NULL);
+	split_writter(res, str, c);
+	return (res);
 }
 
-static void	free_all(char **result, int index)
-{
-	while (index-- > 0)
-		free(result[index]);
-	free(result);
-}
+// int main(void)
+// {
+//     // char    str[] = NULL;
+//     char    c = 'A';
 
-char	**ft_split(char const *s, char c)
-{
-	int		index;
-	char	**result;
-	int		result_index;
+// 	size_t count  =  splited_count(NULL, c);
+//     printf("%zu substrings.\n", count);
+//     char **arr;
 
-	index = 0;
-	result_index = -1;
-	result = malloc((strings_count(s, c) + 1) * sizeof(char *));
-	if (!result)
-		return (0);
-	while (++result_index < strings_count(s, c))
-	{
-		while (s[index] == c)
-			index++;
-		result[result_index] = ft_substr(s, index, string_length(s, c, index));
-		if (!(result[result_index]))
-		{
-			free_all(result, result_index);
-			return (0);
-		}
-		index += string_length(s, c, index);
-	}
-	result[result_index] = 0;
-	return (result);
-}
+//     arr = ft_split(NULL, c);
+//     for(size_t i = 0; i < count + 10; i++)
+//     {
+//         printf("%s\n", arr[i]);
+//     }
+// }

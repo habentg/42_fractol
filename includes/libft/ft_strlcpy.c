@@ -3,32 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 14:52:31 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 20:38:02 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:18:40 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:18:40 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	res;
+	size_t	src_len;
 
 	i = 0;
-	res = 0;
-	while (src[res])
-		res++;
-	if (size > 0)
+	src_len = ft_strlen(src);
+	if (size <= 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < size - 1)
 	{
-		while (src[i] && i < (size - 1))
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		dest[i] = src[i];
+		i++;
 	}
-	return (res);
+	dest[i] = '\0';
+	return (src_len);
 }
+
+// int	main(void)
+// {
+// 	char dest[20];
+// 	// char src[] = "01234556789";
+// 	printf("%lu\n", ft_strlcpy(dest, NULL, 0));
+// }

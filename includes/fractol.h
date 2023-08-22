@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkiflema <mkiflema@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/17 20:09:36 by mkiflema         ###   ########.fr       */
+/*   Updated: 2023/08/23 03:15:11 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "mlx/mlx.h"
 # include <math.h>
 
-# define WIDTH 1080 // window width
-# define HEIGHT 800 // window height
+# define WIDTH 1280
+# define HEIGHT 900
 
 /*key codes*/
 # define ESC_KEY 53
@@ -32,59 +32,59 @@
 # define ITERATE 34
 # define ZOOM_IN 4
 # define ZOOM_OUT 5
+
 /*our graphics env*/
 typedef struct s_mlx
 {
-	void			*mlx_ptr; // pointer to (initialized) mlx instance
-	void			*mlx_win; // pointer to the width X height window
-	void			*img; // pointer to the frame we are ploting each pixel into
-	int				*addr; // address of each byte ( + offset), we will manuplate this to change colors
-	int				bpp; //pits per pixel, for color depth--- usually 8 bps represents 256 shades of color
-	int				line_len; // The number of bytes used to store a single line of the image.
-	int				endian; // order used to store info, eg: 5f a4 little indian(a4 5f) big indian(5f a4) 
+	void			*mlx_ptr;
+	void			*mlx_win;
+	void			*img;
+	int				*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
 }					t_mlx;
 
 /*our dear fractal*/
 typedef struct s_fractal
 {
-	t_mlx			mlx; // instance of the mlx graphics env
-	int				x; // horizontal coordinate of the 2D window
-	int				y; // vertical
-	double			c_re; // real part of c in the equition Zn+1 = Zn**2 + C; where C = re + im
-	double			c_im; // imaginary
-	double			new_re; // real part of c in the equition Zn+1 = Zn**2 + C; After every calcu
-	double			new_im; // imaginary
+	t_mlx			mlx;
+	int				x;
+	int				y;
+	double			c_re;
+	double			c_im;
+	double			new_re;
+	double			new_im;
 	double			old_re;
 	double			old_im;
-	double			zoom; // zoom level
-	double			mv_x; // moving the x cordinate
-	double			mv_y; // moving the x cordinate
-	int				max_iter; // max iteration
+	double			zoom;
+	double			mv_x;
+	double			mv_y;
+	int				max_iter;
 	int				fract_id;
-	int				color; // chosen color to represent the bit
+	int				color;
 }					t_fractal;
 
 /* fractal funcs*/
-void    init_fractal(int argc, char **argv, t_fractal **data);
-void    mandel_init(t_fractal **mandel);
+void	init_fractal(int argc, char **argv, t_fractal **data);
+void	mandel_init(t_fractal **mandel);
 void	mandel_draw(t_fractal **mandel);
 void	mandel(t_fractal **mandel);
 void	fract_calculate(t_fractal **mandel, int *i);
-
-void    julia_set(t_fractal **julia);
-void    julia_draw(t_fractal **julia);
-void    julia_init(t_fractal **julia);
+void	julia_set(t_fractal **julia);
+void	julia_draw(t_fractal **julia);
+void	julia_init(t_fractal **julia);
 
 /*key hooks*/
 int		close_func(t_fractal *fractal);
 int		key_events_handler(int key_code, t_fractal *fract);
 
 /*mouse hooks*/
-int		mouse_event_handler(int mouse_code, int x, int y, t_fractal   *fract);
+int		mouse_event_handler(int mouse_code, int x, int y, t_fractal *fract);
 
 /*Error handling funcs*/
-void    handle_error(int argc, char **argv);
+void	handle_error(int argc, char **argv);
 
 /* helper funcs*/
-double  ft_atof(char *str);
+double	ft_atof(char *str);
 #endif

@@ -3,40 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 12:16:32 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/14 15:32:40 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:18:32 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:18:32 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
-	size_t	dest_size;
-	size_t	src_size;
-	size_t	total_size;
+	char	*temp_dst;
+	char	*temp_src;
+	size_t	dst_length;
+	size_t	buffer;
 
-	dest_size = 0;
-	src_size = 0;
-	while (dest[dest_size])
-		dest_size++;
-	while (src[src_size])
-		src_size++;
-	if (size == 0)
-		return (src_size);
-	if (size <= dest_size)
-		return (src_size + size);
-	total_size = src_size + dest_size;
-	i = 0;
-	while (src[i] && dest_size < size - 1)
+	temp_dst = dst;
+	temp_src = (char *)src;
+	buffer = dstsize;
+	while (buffer-- != 0 && *temp_dst != '\0')
+		temp_dst++;
+	dst_length = temp_dst - dst;
+	buffer = dstsize - dst_length;
+	if (buffer == 0)
+		return (dst_length + ft_strlen(temp_src));
+	while (*temp_src != '\0')
 	{
-		dest[dest_size] = src[i];
-		dest_size++;
-		i++;
+		if (buffer > 1)
+		{
+			*temp_dst++ = *temp_src;
+			buffer--;
+		}
+		temp_src++;
 	}
-	dest[dest_size] = '\0';
-	return (total_size);
+	*temp_dst = '\0';
+	return (dst_length + (temp_src - src));
 }
+
+// int main(void)
+// {
+//     char    dest[10] = "xx";
+//     const char src[256] = "hello world";
+//     printf("%zu\n", ft_strlcat(dest, src, 1));
+// 	printf("%zu\n", strlcat(dest, src, 1));
+// }

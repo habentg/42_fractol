@@ -3,30 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 18:59:19 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 19:49:08 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:16:31 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:16:31 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	size_t			count;
-	unsigned char	*dest_copy;
-	unsigned char	*src_copy;
+	size_t	i;
 
-	if (!dest && !src)
-		return (0);
-	count = 0;
-	dest_copy = (unsigned char *)dest;
-	src_copy = (unsigned char *)src;
-	while (count < n)
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
 	{
-		dest_copy[count] = (unsigned char)src_copy[count];
-		count++;
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
 	}
 	return (dest);
 }
+
+// int main(void)
+// {
+//     char    dest[256] = "xxxx";
+//     const char src[256] = "hello world";
+
+//     ft_memcpy(dest, src, 3);
+//     for (int i = 0; i < 15; i++)
+//     {
+//         printf("%c", dest[i]);
+//     }
+// }

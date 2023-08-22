@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 12:54:07 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/06/09 13:46:43 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/15 13:43:37 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:16:10 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_pointer(unsigned long long p, t_flags *flags)
+int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	size_t	i;
+	t_list	*temp_node;
 
-	count = 0;
-	flags->hash = 0;
-	count += ft_print_string("0x");
-	count += ft_print_hexa(p, 'x', flags);
-	return (count);
+	i = 0;
+	temp_node = lst;
+	while (temp_node != NULL)
+	{
+		temp_node = temp_node->next;
+		i++;
+	}
+	return (i);
 }

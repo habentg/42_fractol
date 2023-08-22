@@ -3,51 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 11:12:48 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 21:17:49 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:19:17 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:19:17 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
-	if (little[0] == '\0' || (len == 0 && !big))
-		return ((char *)big);
 	i = 0;
-	while (big[i] != '\0' && (size_t)i < len)
+	j = 0;
+	if (*little == '\0' || little == NULL)
+		return ((char *)big);
+	while ((i < len) && (big[i] != '\0'))
 	{
 		j = 0;
-		while (little[j] != '\0' && (size_t)i + j < len)
+		while (((big[i + j] == little[j])
+				&& (i + j < len)))
 		{
-			if (big[i + j] == little[j])
-			{
-				j++;
-			}
-			else
-				break ;
-		}
-		if (little[j] == '\0')
-		{
-			return ((char *)big + i);
+			if (little[j + 1] == '\0')
+				return ((char *)big + i);
+			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
-
 // int	main(void)
 // {
-// 	char	first[] = "Bonjour";
-// 	char	second[] = "jour";
-// 	int		limit = 10;
-// 	printf("strstr returned %s\n", strnstr(first, second, limit));
-// 	printf("ft_strstr returned %s\n", ft_strnstr(first, second, limit));
-// 	return (0);
+// 	char    big[] = "ABCDEFG-haben-HIJKLM";
+//     char    small[] = "haben";
+
+//     printf("%p\n", ft_strnstr(big, small, 15));
 // }

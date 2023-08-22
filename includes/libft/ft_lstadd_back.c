@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 23:13:07 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/06/09 15:04:05 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 16:48:58 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:15:03 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	get_nl_index(char *stash)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
-
-	i = 0;
-	while (stash[i] && stash[i] != '\n')
-		i++;
-	return (i);
+	if (*lst == NULL)
+		*lst = new;
+	else
+		(ft_lstlast(*lst)->next = new);
 }

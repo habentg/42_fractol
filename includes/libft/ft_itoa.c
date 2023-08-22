@@ -3,82 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 11:30:31 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/13 11:40:56 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/12 23:31:34 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/18 10:27:07 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-static int	get_digits(long int n)
+static unsigned int	get_nb_digit(long n_l, int sign)
 {
-	int	count;
+	unsigned int	nb_digit;
 
-	count = 1;
-	while (n >= 10)
+	if (n_l == 0)
+		return (1);
+	nb_digit = 0;
+	while (n_l > 0)
 	{
-		n /= 10;
-		count++;
+		n_l /= 10;
+		nb_digit++;
 	}
-	return (count);
+	if (sign == -1)
+		nb_digit++;
+	return (nb_digit);
 }
 
-// static void	ft_rev_tab(char *tab, int size)
-// {
-// 	int		i;
-// 	char	*array;
-
-// 	i = 0;
-// 	array = malloc((size + 1) * sizeof(char));
-// 	if (!array)
-// 		return ;
-// 	while (i < size)
-// 	{
-// 		array[i] = *tab;
-// 		if (i != size - 1)
-// 			tab++;
-// 		i++;
-// 	}
-// 	i--;
-// 	tab -= (size - 1);
-// 	while (i >= 0)
-// 	{
-// 		*tab++ = array[i];
-// 		i--;
-// 	}
-// }
+static void	convert_nb(char *outstr, long n_l, unsigned int nb_digit,
+		int sign)
+{
+	outstr[nb_digit] = '\0';
+	outstr[--nb_digit] = n_l % 10 + '0';
+	n_l /= 10;
+	while (n_l > 0)
+	{
+		outstr[--nb_digit] = n_l % 10 + '0';
+		n_l /= 10;
+	}
+	if (sign == -1)
+		outstr[0] = '-';
+}
 
 char	*ft_itoa(int n)
 {
-	int			digit_count;
-	char		*result;
-	long int	n_copy;
+	char			*outstr;
+	long			n_l;
+	unsigned int	nb_digit;
+	int				sign;
 
-	n_copy = n;
-	if (n_copy < 0)
-		n_copy *= -1;
-	digit_count = get_digits(n_copy);
+	sign = 1;
 	if (n < 0)
-		digit_count++;
-	result = malloc((digit_count + 1) * sizeof(char));
-	if (!result)
-		return (0);
-	result[digit_count--] = '\0';
-	while (digit_count >= 0)
 	{
-		result[digit_count--] = (n_copy % 10) + '0';
-		n_copy /= 10;
+		n_l = (long)n * -1;
+		sign = -1;
 	}
-	if (n < 0)
-		result[0] = '-';
-	return (result);
+	else
+		n_l = n;
+	nb_digit = get_nb_digit(n_l, sign);
+	outstr = malloc(sizeof(char) * (nb_digit + 1));
+	if (!outstr)
+		return (NULL);
+	convert_nb(outstr, n_l, nb_digit, sign);
+	return (outstr);
 }
 
-// int	main(void)
+// int		main(void)
 // {
-// 	printf("%s\n", ft_itoa(-2147483648));
-// 	return (0);
+// 	printf("\n%s\n", ft_itoa(-6545644));
 // }

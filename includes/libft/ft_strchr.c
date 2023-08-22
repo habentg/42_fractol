@@ -3,59 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 15:56:03 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/15 18:01:30 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:17:43 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:17:43 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-// char	*ft_strchr(const char *s, int c)
-// {
-// 	int	index;
-
-// 	index = 0;
-// 	while (s[index])
-// 	{
-// 		if (s[index] == c)
-// 			return ((char *)&s[index]);
-// 		index++;
-// 	}
-// 	if (c == '\0')
-// 		return ((char *)&s[index]);
-// 	return (0);
-// }
-
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	size_t			index;
-	unsigned char	*s_pointer;
+	int			i;
+	const char	*newval;
 
-	index = 0;
-	s_pointer = (unsigned char *)s;
-	while (s_pointer[index])
+	i = 0;
+	if (c == '\0')
 	{
-		if (s_pointer[index] == (unsigned char)c)
-			return ((char *)&s_pointer[index]);
-		index++;
+		while (str[i] != '\0')
+			i++;
+		return ((char *)&str[i]);
 	}
-	if (c == '\0' || c == 1024)
-		return ((char *)&s_pointer[index]);
+	while (*str != '\0')
+	{
+		while ((unsigned char)*str == (unsigned char)c)
+		{
+			newval = str;
+			return ((char *)newval);
+		}
+		str++;
+	}
 	return (0);
 }
 
-// int	main(void)
+// int main()
 // {
-// 	char	c;
-// 	char	*s;
+// 	char a[50] = "helloWorld!@abudhabi.com1";
+// 	char c = '@';
 
-// 	c = 'u';
-// 	s = "euuuuuh ?";
-// 	printf("strchr returned %s\n", strchr("teste", 1024));
-// 	printf("ft_strchr returned %s\n", ft_strchr("teste", 1024));
-// 	printf("Théo Babac returned %s\n", s);
-// 	return (0);
+// 	printf("%s\n", ft_strchr(NULL, c));
+// 	printf("\n %s\n", strchr(NULL, c));
 // }

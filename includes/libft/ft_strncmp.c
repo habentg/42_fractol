@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 17:31:55 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/08/17 00:12:32 by aandom           ###   ########.fr       */
+/*   Created: 2023/01/16 22:19:11 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:19:11 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	size_t	i;
+	unsigned int		i;
 
 	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	while (str1[i] && i < n)
 	{
-		if (s1[i] != s2[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-		else
-			i++;
+		if (str1[i] != str2[i])
+		{
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		}
+		i++;
 	}
-	return (0); //returning zero is success
+	if (str2[i] == '\0' || i == n)
+		return (0);
+	else
+		return (-str2[i]);
 }
 
-// int main(void)
+// int	main(void)
 // {
-// 	char str1[] = "abcdef";
-// 	char str2[] = "abc\375xx";
-// 	printf("strncmp returned\t%d\n", strncmp(str1, str2, 5));
-// 	printf("ft_strncmp returned\t%d\n", ft_strncmp(str1, str2, 5));
-// 	return (0);
+// 	printf("ft_strncmp : %d\n", ft_strncmp("testxxx", "testxxxxxx", 10));
+// 	printf("strncmp : %d\n", strncmp("testss", "testssssss", 10));
 // }

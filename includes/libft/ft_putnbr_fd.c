@@ -3,22 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 15:11:51 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 16:28:55 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/15 11:02:15 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:17:25 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-static void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
+	char	res;
+
 	if (n == -2147483648)
 	{
 		write(fd, "-2147483648", 11);
@@ -26,20 +23,22 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
-		n = -n;
+		write(fd, "-", 1);
+		n *= -1;
 	}
-	if (n > 9)
+	if (n >= 10)
 	{
 		ft_putnbr_fd(n / 10, fd);
 		ft_putnbr_fd(n % 10, fd);
 	}
 	else
-		ft_putchar_fd(n + 48, fd);
+	{
+		res = n + '0';
+		write(fd, &res, 1);
+	}
 }
 
 // int	main(void)
 // {
-// 	ft_putnbr_fd(12828363, 1);
-// 	return (0);
+//     ft_putnbr_fd(32765, 1);
 // }

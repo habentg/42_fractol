@@ -3,81 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 15:56:03 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/15 18:18:47 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:19:23 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:19:23 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-// char	*ft_strrchr(const char *s, int c)
-// {
-// 	size_t			index;
-// 	unsigned char	*s_pointer;
-
-// 	index = ft_strlen(s);
-// 	s_pointer = (unsigned char *)s;
-// 	while (index >= 0)
-// 	{
-// 		if (s_pointer[index] == (unsigned char)c)
-// 			return ((char *)&s_pointer[index]);
-// 		index--;
-// 	}
-// 	if ((unsigned char)c == '\0')
-// 		return ((char *)ft_strlen(s));
-// 	if (s_pointer[0] != c)
-// 		return (0);
-// 	return (0);
-// }
-
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	char	*res;
+	char	*p;
 
-	res = 0;
-	while (*s)
+	p = 0;
+	while (*str)
 	{
-		if (*s == (unsigned char)c)
-			res = (char *)s;
-		s++;
+		if (*str == (unsigned char)c)
+			p = ((char *)str);
+		str++;
 	}
-	if ((unsigned char)c == '\0')
-		return ((char *)s);
-	return (res);
+	if (!c)
+		p = ((char *)str);
+	return (p);
 }
-
-// char	*ft_strrchr(const char *s, int c)
-// {
-// 	int	index;
-// 	int	i;
-
-// 	index = 0;
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] == c)
-// 			index = i;
-// 		i++;
-// 	}
-// 	if (c == '\0')
-// 		return ((char *)&s[i]);
-// 	if (index == 0 && s[0] != c)
-// 		return (0);
-// 	return ((char *)&s[index]);
-// }
 
 // int	main(void)
 // {
-// 	char	c;
-// 	char	*s;
+// 	char	str[] = "this-is-a-test-string";
+// 	char	c = '-';
 
-// 	c = 'a';
-// 	s = "euuuhuuh ?";
-// 	printf("strchr returned %s\n", strrchr("teste", 120));
-// 	printf("ft_strchr returned %s\n", ft_strrchr("teste", 120));
-// 	printf("Théo Babac returned %s\n", s);
-// 	return (0);
+// 	printf("strrchr func:%s\n", strrchr(str, c));
+// 	printf("ft_strrchr func: %s\n", ft_strrchr(str, c));
 // }

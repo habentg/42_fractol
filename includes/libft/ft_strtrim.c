@@ -3,107 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 17:22:30 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/14 16:22:14 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/11 07:59:02 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/18 15:38:02 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-static int	ft_strlen(char *str)
+int	getfirst(const char *str1, const char *set)
 {
-	int	count;
+	size_t	count;
+	size_t	len;
 
 	count = 0;
-	while (str[count])
+	len = ft_strlen(str1);
+	while (count < len)
+	{
+		if (ft_strchr(set, str1[count]) == 0)
+			break ;
 		count++;
+	}
 	return (count);
 }
 
-static int	get_start(char const *s1, char const *set)
+int	getlast(const char *str1, const char *set)
 {
-	int	i;
-	int	j;
+	size_t	count;
+	size_t	len;
 
-	i = 0;
-	j = 0;
-	while (s1[i])
+	count = 0;
+	len = ft_strlen(str1);
+	while (count < len)
 	{
-		while (set[j])
-		{
-			if (s1[i] == set[j])
-			{
-				i++;
-				break ;
-			}
-			j++;
-		}
-		if (j == ft_strlen((char *)set))
-			return (i);
-		j = 0;
+		if (ft_strchr(set, str1[len - count - 1]) == 0)
+			break ;
+		count++;
 	}
-	return (0);
-}
-
-static int	get_end(char const *s1, char const *set)
-{
-	int	str_length;
-	int	j;
-
-	str_length = 0;
-	j = 0;
-	while (s1[str_length])
-		str_length++;
-	while (str_length > 0)
-	{
-		while (set[j])
-		{
-			if (s1[str_length - 1] == set[j])
-			{
-				str_length--;
-				break ;
-			}
-			j++;
-		}
-		if (j == ft_strlen((char *)set))
-			return (str_length);
-		j = 0;
-	}
-	return (0);
+	return (len - count);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start;
-	int		end;
-	int		i;
-	char	*trimmed;
+	int		len;
+	char	*trimmedstr;
 
-	start = get_start(s1, set);
-	end = get_end(s1, set);
-	trimmed = malloc((end - start + 1) * sizeof(char));
-	i = 0;
-	if (!trimmed)
-		return (trimmed);
-	while (start < end)
-	{
-		trimmed[i] = s1[start];
-		start++;
-		i++;
-	}
-	trimmed[i] = '\0';
-	return (trimmed);
+	if (!s1)
+		return (0);
+	start = getfirst(s1, set);
+	len = getlast(s1, set);
+	if (len <= start)
+		return (ft_strdup(""));
+	trimmedstr = (char *)malloc(sizeof(char) * (len - start + 1));
+	if (!trimmedstr)
+		return (NULL);
+	ft_strlcpy(trimmedstr, s1 + start, len - start + 1);
+	return (trimmedstr);
 }
 
-// int main(void)
+// int	main(void)
 // {
-//     char string[] = "          ";
-// 	char set[] = " ";
-// 	printf("Start of %s is %d\n", string, get_start(string, set));
-// 	printf("End of %s is %d\n", string, get_end(string, set));
-// 	printf("Trimmed %s is %s\n", string, ft_strtrim(string, set));
-// 	return (0);
+// 	char const	s1[] = "1234Haben123321";
+// 	char const	set[] = "123";
+// 	printf("%d\n", getfirst(s1, set));
+// 	printf("%d\n", getlast(s1, set));
+// 	char *p = ft_strtrim(s1, set);
+// 	printf("%s\n", p);
 // }

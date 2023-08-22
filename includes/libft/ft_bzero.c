@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 18:56:52 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 19:44:33 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:13:48 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:13:48 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *dest, size_t n)
 {
-	size_t			count;
-	unsigned char	*pointer_copy;
-
-	count = 0;
-	pointer_copy = (unsigned char *)s;
-	if (n == 0)
-		return ;
-	while (count < n)
-	{
-		pointer_copy[count++] = (unsigned char) '\0';
-	}
+	ft_memset(dest, 0, n);
 }
+
+// int	main(void)
+// {
+// 	char buf[10];
+// 	ft_bzero(buf, 10);
+// 	for (int x = 0; x < 10; x++)
+// 	{
+// 		printf("%d ", buf[x]);
+// 	}
+// 	printf("%s\n", "done");
+// }

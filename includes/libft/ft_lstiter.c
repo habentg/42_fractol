@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 12:53:43 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/06/09 13:46:43 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 20:02:13 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:15:36 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_string(char *str)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	i;
+	t_list	*current;
 
-	i = 0;
-	if (!str)
-		return (ft_print_string("(null)"));
-	while (str[i])
+	if (!lst || !f)
+		return ;
+	current = lst;
+	while (current)
 	{
-		ft_putchar_fd(str[i], 1);
-		i++;
+		f(current->content);
+		current = current->next;
 	}
-	return (i);
 }

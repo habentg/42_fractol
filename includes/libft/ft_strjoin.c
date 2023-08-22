@@ -3,60 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 17:10:28 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/13 12:25:49 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:18:16 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/18 12:33:14 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
-static int	ft_strlen(char const *str)
-{
-	int	count;
-
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
-}
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*join;
+	char	*newstr;
 	int		i;
 	int		j;
 
-	if (!s1 || !s2)
-		return (0);
-	join = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!join)
-		return (0);
 	i = 0;
 	j = 0;
-	while (s1[i])
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	newstr = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!newstr)
+		return (0);
+	while (s1[i] != '\0')
 	{
-		join[i] = s1[i];
+		newstr[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	while (s2[j] != '\0')
 	{
-		join[i] = s2[j];
+		newstr[i] = s2[j];
 		i++;
 		j++;
 	}
-	join[i] = '\0';
-	return (join);
+	newstr[i] = '\0';
+	return (newstr);
 }
 
 // int	main(void)
 // {
-// 	char *s1 = "where is my ";
-// 	char *s2 = "malloc ???";
+// 	char const	s1[] = "Hello";
+// 	char const	s2[] = " World!";
 
-// 	char *res = ft_strjoin(s2, s1);
-// 	printf("Output is %s\n", res);
-// 	return (0);
+// 	char *k = ft_strjoin(s1, s2);
+
+// 	for (int i = 0; i < 20; i++)
+// 	{
+// 		printf("%c\n", k[i]);
+// 	}
 // }

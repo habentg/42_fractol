@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 15:56:58 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/14 15:51:23 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:18:47 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:18:47 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
-	while (str[count])
+	while (str[count] != '\0')
 		count++;
 	return (count);
 }
+
+// int main() {
+//     printf("length: %d\n", ft_strlen("HabenTesfam"));
+// }

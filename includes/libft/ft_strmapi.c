@@ -3,47 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 14:48:25 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/13 14:31:09 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:18:55 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:18:56 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-// char	f(unsigned int i, char c)
+// char	xxx(unsigned int a, char b)
 // {
-// 	return (i + '0');
+// 	if (b < 'n' && a) {
+// 		return ('A');
+// 	}
+// 	else
+// 		return ('E');
 // }
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	char	*result;
+	size_t	len;
+	size_t	i;
+	char	*str;
 
 	if (!s || !f)
-		return (0);
+		return (NULL);
+	len = ft_strlen(s);
 	i = 0;
-	while (s[i])
-		i++;
-	result = malloc((i + 1) * sizeof(char));
-	if (!result)
-		return (0);
-	i = 0;
-	while (s[i])
+	str = (char *)malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (i < len)
 	{
-		result[i] = f(i, s[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	result[i] = 0;
-	return (result);
+	str[i] = '\0';
+	return (str);
 }
 
 // int	main(void)
 // {
-// 	char string[] = "bonjour";
-// 	printf("%s got turned into %s\n", string, ft_strmapi(string, f));
-// 	return (0);
+// 	printf("%s\n", ft_strmapi("Haben", xxx));
 // }

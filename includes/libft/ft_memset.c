@@ -3,25 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 18:36:06 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/12 17:00:10 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:16:50 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:16:50 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *dest, int val, size_t n)
 {
-	size_t			count;
-	unsigned char	*pointer_copy;
+	unsigned char	*p;
+	size_t			i;
 
-	count = 0;
-	pointer_copy = (unsigned char *)s;
-	while (count < n)
+	i = 0;
+	p = (unsigned char *)dest;
+	while (i < n)
 	{
-		pointer_copy[count++] = (unsigned char)c;
+		p[i] = val;
+		i++;
 	}
-	return (pointer_copy);
+	dest = p;
+	return (dest);
 }
+
+// int main(void)
+// {
+// 	char    dest[20];
+// 	char *p = ft_memset(dest, 'a', 10);
+// 	printf("%p\n", p);
+// 	for(size_t i = 0; i < ft_strlen(p); i++)
+// 		printf("%c\n", p[i]);
+// 	printf("%p\n", memset(dest, 'a', 20));   
+// }

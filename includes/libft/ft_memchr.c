@@ -3,41 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 15:56:03 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/13 12:15:56 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/16 22:16:15 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:16:15 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *str, int c, size_t len)
 {
-	size_t			index;
-	unsigned char	*s_pointer;
+	size_t	i;
 
-	index = 0;
-	s_pointer = (unsigned char *)s;
-	while (index < n)
+	i = 0;
+	while (i < len)
 	{
-		if (s_pointer[index] == (unsigned char)c)
-			return (&s_pointer[index]);
-		index++;
+		if (((unsigned char *)str)[i] == (unsigned char)c)
+			return (((unsigned char *)str) + i);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
 
-// int	main(void)
+// int main(void)
 // {
-// 	char	c;
-// 	char	*s;
+//     char str[] = "hello world";
+//     char *p = memchr(str, 'e', 7);
 
-// 	c = 'u';
-// 	s = "e\0uuuh ?";
-// 	printf("strchr returned %p\n", memchr(s, c, 10));
-// 	printf("ft_strchr returned %p\n", ft_memchr(s, c, 10));
-// 	printf("Théo Babac returned %s\n", s);
-// 	return (0);
+//     printf("%s\n", ft_memchr(str, 'e', 7));
+//     printf("%s\n", p);
 // }

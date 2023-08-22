@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 13:18:39 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/13 13:28:10 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/01/15 15:31:15 by hatesfam          #+#    #+#             */
+/*   Updated: 2023/01/16 22:15:44 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int		count;
-	t_list	*current;
+	t_list	*head_node;
+	t_list	*res;
 
-	if (!lst)
+	head_node = lst;
+	res = NULL;
+	if (!head_node)
 		return (0);
-	count = 1;
-	current = lst;
-	while (current->next)
+	while (head_node != NULL)
 	{
-		count++;
-		current = current->next;
+		res = head_node;
+		head_node = head_node->next;
 	}
-	return (count);
+	return (res);
 }
