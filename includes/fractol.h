@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/23 03:15:11 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/08/23 03:46:06 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,13 @@ void	julia_set(t_fractal **julia);
 void	julia_draw(t_fractal **julia);
 void	julia_init(t_fractal **julia);
 
-/*key hooks*/
+/*key & mouse hooks*/
 int		close_func(t_fractal *fractal);
 int		key_events_handler(int key_code, t_fractal *fract);
-
-/*mouse hooks*/
 int		mouse_event_handler(int mouse_code, int x, int y, t_fractal *fract);
 
-/*Error handling funcs*/
+/*Error handling & helper funcs*/
 void	handle_error(int argc, char **argv);
-
-/* helper funcs*/
+void	ft_error(char *msg);
 double	ft_atof(char *str);
 #endif

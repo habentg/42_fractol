@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 00:12:36 by fkidane           #+#    #+#             */
-/*   Updated: 2023/08/23 03:19:24 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/08/23 05:21:42 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,24 @@ void	mandel_init(t_fractal **mandel)
 
 	m = *mandel;
 	m->mlx.mlx_ptr = mlx_init();
-	m->mlx.mlx_win = mlx_new_window(m->mlx.mlx_ptr, \
-		WIDTH, HEIGHT, "MandelBrot Fractal");
 	m->mlx.img = mlx_new_image(m->mlx.mlx_ptr, WIDTH, HEIGHT);
+	if (m->fract_id == 1)
+		m->mlx.mlx_win = mlx_new_window(m->mlx.mlx_ptr, \
+			WIDTH, HEIGHT, "MandelBrot Fractal");
+	else
+		m->mlx.mlx_win = mlx_new_window(m->mlx.mlx_ptr, \
+			WIDTH, HEIGHT, "Burningship Fractal");
 	m->mlx.addr = (int *)mlx_get_data_addr(m->mlx.img, &(m->mlx.bpp), \
 		&(m->mlx.line_len), &(m->mlx.endian));
 	m->c_re = 0;
 	m->c_im = 0;
 	m->new_re = 0.0;
 	m->new_im = 0.0;
-	m->zoom = 1.0;
-	m->mv_x = 0;
+	m->zoom = 0.85;
+	m->mv_x = 0.3;
 	m->mv_y = 0;
 	m->max_iter = 100;
-	m->color = 0xccf1ff;
+	m->color = 0x00ccf1ff;
 }
 
 void	mandel_draw(t_fractal **mandel)
@@ -56,7 +60,7 @@ void	mandel_draw(t_fractal **mandel)
 			if (i == m->max_iter)
 				m->mlx.addr[m->y * WIDTH + m->x] = 0;
 			else
-				m->mlx.addr[m->y * WIDTH + m->x] = (i >> 2) * m->color;
+				m->mlx.addr[m->y * WIDTH + m->x] = (i >> 1) * m->color;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:09:05 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/20 15:25:36 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/08/23 04:59:16 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	julia_init(t_fractal **julia)
 	j->zoom = 1.0;
 	j->mv_x = 0;
 	j->mv_y = 0;
-	j->max_iter = 60;
-	j->color = 0xccf1ff;
+	j->max_iter = 100;
+	j->color = 0x00ccf1ff;
 }
 
 void	julia_draw(t_fractal **julia)
@@ -44,7 +44,7 @@ void	julia_draw(t_fractal **julia)
 		j->x = -1;
 		while (++(j->x) < WIDTH)
 		{
-			j->new_re = -1.5 * (j->x - WIDTH / 2) / \
+			j->new_re = 1.5 * (j->x - WIDTH / 2) / \
 				(j->zoom * WIDTH / 2) - j->mv_x;
 			j->new_im = (j->y - HEIGHT / 2) / \
 				(j->zoom * HEIGHT / 2) - j->mv_y;
@@ -52,7 +52,7 @@ void	julia_draw(t_fractal **julia)
 			if (i == j->max_iter)
 				j->mlx.addr[j->y * WIDTH + j->x] = 0;
 			else
-				j->mlx.addr[j->y * WIDTH + j->x] = j->color * (i >> 2);
+				j->mlx.addr[j->y * WIDTH + j->x] = j->color * (i >> 6);
 		}
 	}
 }

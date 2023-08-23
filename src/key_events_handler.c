@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events_handler.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkiflema <mkiflema@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:39:27 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/17 20:11:54 by mkiflema         ###   ########.fr       */
+/*   Updated: 2023/08/23 05:10:33 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static void	back_default(t_fractal **fract)
 	(*fract)->mv_x = 0.0;
 	(*fract)->mv_y = 0.0;
 	(*fract)->zoom = 1;
-	(*fract)->color = 0xccf1ff;
+	(*fract)->color = 0x00ccf1ff;
 }
 
 static void	iterate_more(t_fractal **fract)
 {
-	if ((*fract)->max_iter < 200)
+	if ((*fract)->max_iter < 400)
 		(*fract)->max_iter += 10;
-	else if ((*fract)->max_iter >= 200)
+	else if ((*fract)->max_iter >= 400)
 		(*fract)->max_iter = 100;
 }
 

@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 22:12:41 by fkidane           #+#    #+#             */
-/*   Updated: 2023/08/20 15:28:08 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/08/23 04:23:13 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	init_fractal(int argc, char **argv, t_fractal **data)
 	else if (argc == 4 && !ft_strncmp(argv[1], "j", 2))
 	{
 		(*data)->fract_id = 3;
-		if (!ft_atof(argv[2]) || !ft_atof(argv[3]))
-			exit(0);
 		(*data)->c_re = ft_atof(argv[2]);
 		(*data)->c_im = ft_atof(argv[3]);
 		julia_set(data);
@@ -41,7 +39,7 @@ int	main(int argc, char **argv)
 
 	data = (t_fractal *)malloc(sizeof(t_fractal));
 	if (!data)
-		exit(0);
+		ft_error("ERROR! Memory allocation failed!");
 	handle_error(argc, argv);
 	init_fractal(argc, argv, &data);
 	free(data);
