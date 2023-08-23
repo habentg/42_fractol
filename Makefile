@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
+#    By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 05:18:43 by aandom            #+#    #+#              #
-#    Updated: 2023/08/19 18:32:37 by aandom           ###   ########.fr        #
+#    Updated: 2023/08/23 05:31:14 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(MLX):
 
 clean:
 	@$(MAKE) -C $(LIBFT_PATH) clean
-# @$(MAKE) -C $(MLX_PATH) clean
+	@$(MAKE) -C $(MLX_PATH) clean
 	@rm -rf $(OBJ_FILES)
 
 
