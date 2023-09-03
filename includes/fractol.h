@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 15:58:46 by tglandai          #+#    #+#             */
-/*   Updated: 2023/08/23 03:46:06 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/09/03 18:12:58 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		key_events_handler(int key_code, t_fractal *fract);
 int		mouse_event_handler(int mouse_code, int x, int y, t_fractal *fract);
 
 /*Error handling & helper funcs*/
-void	handle_error(int argc, char **argv);
-void	ft_error(char *msg);
-double	ft_atof(char *str);
+void	handle_error(int argc, char **argv, t_fractal *fractal);
+void	ft_error(char *msg, t_fractal *fractal);
+double	ft_atof(char *str, t_fractal *fractal);
 #endif

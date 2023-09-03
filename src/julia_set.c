@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:09:05 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/23 04:59:16 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/09/03 16:27:01 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	julia_draw(t_fractal **julia)
 			if (i == j->max_iter)
 				j->mlx.addr[j->y * WIDTH + j->x] = 0;
 			else
-				j->mlx.addr[j->y * WIDTH + j->x] = j->color * (i >> 6);
+				j->mlx.addr[j->y * WIDTH + j->x] = j->color * (i >> 4);
 		}
 	}
 }

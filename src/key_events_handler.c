@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:39:27 by aandom            #+#    #+#             */
-/*   Updated: 2023/08/23 05:10:33 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/09/03 18:35:17 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	close_func(t_fractal *fractal)
 		mlx_destroy_image((fractal)->mlx.mlx_ptr, (fractal)->mlx.img);
 	if ((fractal)->mlx.mlx_ptr || (fractal)->mlx.mlx_win)
 		mlx_destroy_window((fractal)->mlx.mlx_ptr, (fractal)->mlx.mlx_win);
+	free(fractal);
 	exit(0);
 }
 
@@ -32,10 +33,10 @@ static void	back_default(t_fractal **fract)
 
 static void	iterate_more(t_fractal **fract)
 {
-	if ((*fract)->max_iter < 400)
+	if ((*fract)->max_iter < 200)
 		(*fract)->max_iter += 10;
-	else if ((*fract)->max_iter >= 400)
-		(*fract)->max_iter = 100;
+	else if ((*fract)->max_iter >= 200)
+		(*fract)->max_iter = 20;
 }
 
 static void	move_keys(int key_code, t_fractal *fract)

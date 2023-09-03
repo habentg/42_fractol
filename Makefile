@@ -6,11 +6,11 @@
 #    By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 05:18:43 by aandom            #+#    #+#              #
-#    Updated: 2023/08/23 05:31:14 by hatesfam         ###   ########.fr        #
+#    Updated: 2023/09/03 21:47:43 by hatesfam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-$(VERBOSE).SILENT:
+# $(VERBOSE).SILENT:
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3

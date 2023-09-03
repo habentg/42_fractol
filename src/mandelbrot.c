@@ -6,7 +6,7 @@
 /*   By: hatesfam <hatesfam@student.abudhabi42.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 00:12:36 by fkidane           #+#    #+#             */
-/*   Updated: 2023/08/23 05:21:42 by hatesfam         ###   ########.fr       */
+/*   Updated: 2023/09/03 18:39:43 by hatesfam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	mandel_init(t_fractal **mandel)
 	m->new_re = 0.0;
 	m->new_im = 0.0;
 	m->zoom = 0.85;
-	m->mv_x = 0.3;
+	m->mv_x = 0.5;
 	m->mv_y = 0;
 	m->max_iter = 100;
 	m->color = 0x00ccf1ff;
